@@ -88,3 +88,9 @@ Example Response:
 {
   "message": "House Price Prediction API is running"
 }
+
+## Live Demo
+API URL: https://house-price-api-ob1n.onrender.com
+
+Swagger Docs:
+https://house-price-api-ob1n.onrender.com/docs
