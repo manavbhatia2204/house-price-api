@@ -100,5 +100,10 @@ https://house-price-api-ob1n.onrender.com/docs
 This project has been containerized using Docker.
 
 ### Build Docker Image
-```bash
 docker build -t house-price-api .
+
+### Run Container
+docker run -p 8000:8000 house-price-api
+
+### Access API
+http://localhost:8000/docs
