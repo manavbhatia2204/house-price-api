@@ -94,3 +94,11 @@ API URL: https://house-price-api-ob1n.onrender.com
 
 Swagger Docs:
 https://house-price-api-ob1n.onrender.com/docs
+
+## Docker Support
+
+This project has been containerized using Docker.
+
+### Build Docker Image
+```bash
+docker build -t house-price-api .
