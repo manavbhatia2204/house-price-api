@@ -1,109 +1,201 @@
 # House Price Prediction API
 
 ## Project Overview
-This project predicts house prices using Machine Learning and exposes the trained model through a FastAPI REST API.
 
-Users can send house details such as living area, overall quality, and garage capacity, and the API returns a predicted house price.
+Built an end-to-end MLOps pipeline that predicts house prices and serves predictions through a production-ready API.
+
+This project evolved from a basic machine learning model into a complete production deployment system:
+
+ML Model → FastAPI → Docker → Kubernetes → Prometheus → Grafana → CI/CD
+
+Users can send house details such as living area, overall quality, and garage capacity to receive real-time house price predictions.
 
 ---
 
-## Features
+# Features
+
+## Machine Learning
 - Data preprocessing using Pandas
-- Handled missing values
-- Converted categorical features using one-hot encoding
-- Trained Decision Tree model
-- Trained Random Forest model
-- Hyperparameter tuning experiments
-- Saved trained model using Joblib
-- Built REST API using FastAPI
-- Added input validation using Pydantic
+- Missing value handling
+- Feature engineering
+- Decision Tree model training
+- Random Forest model training
+- Hyperparameter tuning
+- Model persistence using Joblib
+
+## Model Performance
+- Random Forest selected as final model
+- Evaluated using MAE (Mean Absolute Error)
+- Best model saved using Joblib
+
+## Backend/API
+- REST API built using FastAPI
+- Input validation using Pydantic
 - Real-time prediction endpoint
-- Deployed-ready architecture
+- Swagger API documentation
+
+## Deployment & DevOps
+- Containerized using Docker
+- Deployed on Render
+- Kubernetes deployment using Minikube
+- Service exposure using Kubernetes Services
+- CI/CD pipeline using GitHub Actions
+
+## Monitoring & Observability
+- Prometheus metrics integration
+- API monitoring endpoint (/metrics)
+- Grafana dashboard visualization
+- Request monitoring
+- Error monitoring
+- Latency tracking
+- CPU monitoring
+- Memory monitoring
 
 ---
 
-## Tech Stack
+# Tech Stack
+
+### ML
 - Python
 - Pandas
 - Scikit-learn
+- Joblib
+
+### Backend
 - FastAPI
 - Pydantic
 - Uvicorn
-- Joblib
-- Git
-- GitHub
+
+### DevOps
+- Docker
+- Kubernetes
+- GitHub Actions
+
+### Monitoring
+- Prometheus
+- Grafana
+
+### Cloud
 - Render
 
----
-
-## Dataset
-Dataset used:
-Kaggle House Prices Dataset
-
-File used:
-- train.csv
-
-Target Variable:
-- SalePrice
+### Version Control
+- Git
+- GitHub
 
 ---
 
-## Machine Learning Workflow
-1. Load dataset
-2. Handle missing values
-3. Convert categorical variables
-4. Train-test split
-5. Train Decision Tree model
-6. Train Random Forest model
-7. Compare MAE scores
-8. Tune model parameters
-9. Save best model
-10. Build API layer
+# Dataset
+Dataset Used: Kaggle House Prices Dataset
+File Used: train.csv
+Target Variable: SalePrice
 
 ---
 
-## API Endpoints
+# API Endpoints
 
-## Sample Input
+## GET /
+Checks whether API is running
 
-```json
+Sample Response:
+{
+  "message": "House Price Prediction API is running"
+}
+
+## POST /predict
+
+Sample Input:
 {
   "GrLivArea": 1500,
   "OverallQual": 7,
   "GarageCars": 2
 }
 
-## Sample Output
-
+Sample Output:
 {
   "predicted_price": 149111.58
 }
 
-### GET /
-Checks whether API is running
+---
 
-Example Response:
+# Monitoring Endpoint
 
-```json
-{
-  "message": "House Price Prediction API is running"
-}
+GET /metrics
 
-## Live Demo
-API URL: https://house-price-api-ob1n.onrender.com
+Tracks:
+- Total requests
+- Error rate
+- Latency
+- CPU usage
+- Memory usage
 
-Swagger Docs:
-https://house-price-api-ob1n.onrender.com/docs
+---
 
-## Docker Support
-
-This project has been containerized using Docker.
-
-### Build Docker Image
+# Docker Commands
 docker build -t house-price-api .
-
-### Run Container
 docker run -p 8000:8000 house-price-api
 
-### Access API
+API Docs:
 http://localhost:8000/docs
+
+---
+
+# Kubernetes Commands
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl get pods
+kubectl get services
+minikube service house-price-service --url
+
+---
+
+# Prometheus
+Download: https://prometheus.io/download/
+Run: prometheus.exe
+Dashboard: http://localhost:9090
+
+---
+
+# Grafana
+Download: https://grafana.com/grafana/download
+Dashboard: http://localhost:3000
+Default Login:
+Username: admin
+Password: admin
+
+---
+
+# Live Deployment
+https://house-price-api-ob1n.onrender.com
+https://house-price-api-ob1n.onrender.com/docs
+
+---
+
+# Production Architecture
+
+Client Request
+    ↓
+FastAPI API
+    ↓
+ML Model
+    ↓
+Docker Container
+    ↓
+Kubernetes Deployment
+    ↓
+Prometheus Monitoring
+    ↓
+Grafana Dashboard
+    ↓
+CI/CD Pipeline
+
+---
+
+# Key Learning Outcomes
+- End-to-end MLOps pipeline development
+- API development
+- Docker containerization
+- Kubernetes orchestration
+- Monitoring & observability
+- CI/CD automation
+- Production debugging
+- Cloud deployment fundamentals
