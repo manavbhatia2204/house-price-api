@@ -1,9 +1,12 @@
 from fastapi import FastAPI
+from prometheus_fastapi_instrumentator import Instrumentator
 from pydantic import BaseModel
 import joblib
 import pandas as pd
 
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)
 
 model = joblib.load("model.pkl")
 
